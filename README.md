@@ -25,8 +25,8 @@ In the cloud era we need smart proxies.
     - Rewrite hostname
     - Rewrite URL
     - Expose URL (with regular expressions) they can work
-        - If a worker say they 
-    -
+        - If a worker can serve `^/(foo|bar)/.+`, any other request will generate a `404 Error page` in the proxy itself.
+    - They can choose which plugins to use (Global plugins may apply any ways)
 
 ### Some concepts
 

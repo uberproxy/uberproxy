@@ -1,0 +1,6 @@
+ssl:
+    port: 443
+    certs: /var/tmp/uberproxy/https-certs
+dynamic: /var/tmp/uberproxy/dynamic.yml
+cluster: 4
+port: 80

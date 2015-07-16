@@ -5,13 +5,13 @@ In the cloud era we need smart proxies.
 
 ## Features
 
-1. Highly configurable.
-    - Provides a RESTful interface to add and remove workers, SSL domains, etc.
+1. Highly configurable
+    - Provides a [RESTful interface](docs/protocol.md) to add and remove workers, SSL domains, etc.
 2. Easy to extend.
-    - Write plugins in Javascript!
+    - [Write plugins](docs/plugins.md) in Javascript!
     - Everything is a plugin internally
-        - Redirect
-        - Logging
+        - [Redirect](plugins/redirect.js)
+        - [Logging](plugins/logs.js)
 3. Fast (NodeJS is neat handling lots of I/O)
 4. Efficient uploads
     - The proxy buffer to disk a file upload

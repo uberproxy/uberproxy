@@ -1,3 +1,5 @@
+'use strict';
+
 function RewriteHeader(proxy) {
     proxy.on('request', function(conn) {
         var parts = /foo(.+)/.exec(conn.url);

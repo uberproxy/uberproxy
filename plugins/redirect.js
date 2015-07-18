@@ -1,3 +1,5 @@
+'use strict';
+
 var URL = require('url');
 
 function redirect(Worker) {

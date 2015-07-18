@@ -45,11 +45,11 @@ Having a proxy makes really easy to scale up or down our applications in a matte
     npm install
 
     # Create a secret token
-    node create-config.js
+    node index.js setup
 
 ## Configuration
 
-`node create-config.js` will create a default configuration (usually `config.yml`).o
+`setup` will create a default configuration (usually `config.yml`).
 
 ```yaml
 ssl:
@@ -61,11 +61,11 @@ port: 80
 secret: 8e0c5e97f91e1a8dde85702ffadff48e8488fda46c457712920aa835dabe25c8
 ```
 
-Both (`create-config.js` and `index.js`) accept an optional parameter with the path of the configuration which is `config.yml` by default. We support `YAML` and `JSON`. You can switch from YAML to JSON like this:
+It accept an optional parameter with the path of the configuration which is `config.yml` by default. We support `YAML` and `JSON`. You can switch from YAML to JSON like this:
 
 ```bash
-node create-config.js site.json
-node index.js site.json
+node index.js setup -c foo.json
+node index.js server -c foo.json
 ```
 
 ### Parts

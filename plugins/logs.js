@@ -1,3 +1,5 @@
+'use strict';
+
 var Winston = require('winston');
 var container = new Winston.Container();
 

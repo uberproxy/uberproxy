@@ -39,15 +39,19 @@ In the cloud era we need smart proxies.
 Having a proxy makes really easy to scale up or down our applications in a matter of seconds. `UberProxy` makes it possible to add and remove more workers to your application.
 
 ## Installation
-
-    npm install -g uberproxy
+ 
+```bash
+npm install -g uberproxy
+```
 
 ## Configuration
 
 To create a new configuration you need to run the following command
 
-    # Create a secret token
-    uberproxy setup
+```bash
+# Create a secret token
+uberproxy setup
+```
 
 That will generate a `config.yml` (you can override that with `-c config.json`) that would look like this:
 

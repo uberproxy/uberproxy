@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * This plugin injects the X-Request-ID header
  *

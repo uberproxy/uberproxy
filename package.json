@@ -1,6 +1,6 @@
 {
   "name": "uberproxy",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "UberProxy!",
   "main": "index.js",
   "repository": {
@@ -10,6 +10,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "uberproxy": "./index.js"
+  },
   "keywords": [
     "http",
     "proxy"
@@ -17,6 +20,7 @@
   "author": "UberProxy <uberproxy@uberproxy.org>",
   "license": "ISC",
   "dependencies": {
+    "argparse": "^1.0.2",
     "async": "^1.2.1",
     "async-eventemitter": "^0.2.2",
     "cluster-hub": "^0.1.1",

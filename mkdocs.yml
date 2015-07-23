@@ -5,5 +5,6 @@ site_description: Runtime Reconfigurable Reverse Proxy
 pages:
     - Introduction: intro.md
     - Setup: setup.md
+    - Usage: usage.md
     - Plugins: plugins.md
 

@@ -5,9 +5,9 @@ UberProxy is a **reverse proxy** written in NodeJS. It was designed to be fast a
 ## Features
 
 1. Highly configurable
-    - Provides a [RESTful interface](docs/protocol.md) to add and remove workers, SSL domains, etc.
+    - Provides a [RESTful interface](usage/#restful-interface) to add and remove workers, SSL domains, etc.
 2. Easy to extend.
-    - [Write plugins](docs/plugins.md) in Javascript!
+    - [Write plugins](plugins) in Javascript!
     - Everything is a plugin internally
         - [Redirect](plugins/redirect.js)
         - [Logging](plugins/logs.js)

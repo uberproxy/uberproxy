@@ -26,6 +26,8 @@
     "cluster-hub": "^0.1.1",
     "mkdirp": "^0.5.1",
     "node-uuid": "^1.4.3",
+    "npm": "^2.13.2",
+    "npm-util": "0.0.2",
     "winston": "^1.0.1",
     "yamljs": "^0.2.3"
   }

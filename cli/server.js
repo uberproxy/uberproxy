@@ -47,6 +47,7 @@ function main(argv) {
     var Commands = require('../lib/commands');
     var Config   = require('../lib/config');
     var Conn     = require('../lib/connection');
+    var Plugin   = require('../lib/plugin');
 
     Config.parseArgv(argv);
 
@@ -58,7 +59,12 @@ function main(argv) {
 
         Cluster.on('exit', function(worker, code, signal) {
             console.log('worker ' + worker.process.pid + ' died');
+            Plugin.broadcast();
             Cluster.fork();
+        });
+        
+        process.Hub.on('ready', function() {
+            Plugin.broadcast();
         });
     
         console.log("Http-Listening in port " + Config.port);
@@ -83,6 +89,7 @@ function main(argv) {
     
     Http.createServer(handleRequest).listen(Config.port);
     Https.createServer(require('../lib/https').options, handleRequest).listen(Config.ssl.port);
+    process.Hub.sendToMaster('ready');
 };
 
 exports.main = main;

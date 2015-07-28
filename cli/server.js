@@ -74,8 +74,8 @@ function main(argv) {
         console.log("Https-Listening in port " + Config.ssl.port);
     }
     
-    function handleRequest(req, res) {
-        var conn = new Conn(req, res);
+    function handleRequest(protocol, req, res) {
+        var conn = new Conn(protocol, req, res);
         if (conn.done) {
             /* already handled! */
             return;
@@ -86,8 +86,11 @@ function main(argv) {
         }
     }
     
-    Http.createServer(handleRequest).listen(Config.port);
-    Https.createServer(require('../lib/https').options, handleRequest).listen(Config.ssl.port);
+    Http.createServer(handleRequest.bind(null, 'http:')).listen(Config.port);
+    Https.createServer(
+        require('../lib/https').options,
+        handleRequest.bind(null, 'https:')
+    ).listen(Config.ssl.port);
 };
 
 exports.main = main;

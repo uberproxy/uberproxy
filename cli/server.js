@@ -59,14 +59,13 @@ function main(argv) {
 
         Cluster.on('exit', function(worker, code, signal) {
             console.log('worker ' + worker.process.pid + ' died');
-            Plugin.broadcast();
             Cluster.fork();
         });
-        
-        process.Hub.on('ready', function() {
-            Plugin.broadcast();
+
+        Cluster.on('online', function(worker) {
+            console.log("New worker [" + worker.process.pid + "]");
         });
-    
+        
         console.log("Http-Listening in port " + Config.port);
         console.log("Https-Listening in port " + Config.ssl.port);
         return;
@@ -89,7 +88,6 @@ function main(argv) {
     
     Http.createServer(handleRequest).listen(Config.port);
     Https.createServer(require('../lib/https').options, handleRequest).listen(Config.ssl.port);
-    process.Hub.sendToMaster('ready');
 };
 
 exports.main = main;

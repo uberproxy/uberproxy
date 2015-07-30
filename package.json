@@ -1,6 +1,6 @@
 {
   "name": "uberproxy",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "description": "UberProxy!",
   "main": "index.js",
   "repository": {
@@ -18,7 +18,7 @@
     "proxy"
   ],
   "author": "UberProxy <uberproxy@uberproxy.org>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "argparse": "^1.0.2",
     "async": "^1.2.1",

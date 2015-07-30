@@ -39,17 +39,21 @@ In the cloud era we need smart proxies.
 Having a proxy makes really easy to scale up or down our applications in a matter of seconds. `UberProxy` makes it possible to add and remove more workers to your application.
 
 ## Installation
-
-    git clone git@github.com:uberproxy/uberproxy.git
-    cd uberproxy
-    npm install
-
-    # Create a secret token
-    node index.js setup
+ 
+```bash
+npm install -g uberproxy
+```
 
 ## Configuration
 
-`setup` will create a default configuration (usually `config.yml`).
+To create a new configuration you need to run the following command
+
+```bash
+# Create a secret token
+uberproxy setup
+```
+
+That will generate a `config.yml` (you can override that with `-c config.json`) that would look like this:
 
 ```yaml
 ssl:
@@ -61,11 +65,10 @@ port: 80
 secret: 8e0c5e97f91e1a8dde85702ffadff48e8488fda46c457712920aa835dabe25c8
 ```
 
-It accept an optional parameter with the path of the configuration which is `config.yml` by default. We support `YAML` and `JSON`. You can switch from YAML to JSON like this:
+In order to run the server you should execute this command:
 
 ```bash
-node index.js setup -c foo.json
-node index.js server -c foo.json
+uberproxy server [-c config.yml]
 ```
 
 ### Parts

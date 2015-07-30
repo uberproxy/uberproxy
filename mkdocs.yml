@@ -1,0 +1,10 @@
+site_name: UberProxy
+repo_url: https://github.com/uberproxy/uberproxy
+site_description: Runtime Reconfigurable Reverse Proxy
+
+pages:
+    - Index: index.md
+    - Setup: setup.md
+    - Usage: usage.md
+    - Plugins: plugins.md
+

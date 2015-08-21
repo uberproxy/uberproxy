@@ -99,13 +99,13 @@ It's also possible to define a worker on the config file. If you're using `YAML`
 ```yaml
 workers:
     -
-        client: 'localhost:3333'
+        worker: 'localhost:3333'
         hostname:
             - domain2.foobar.net
         maxreq: 20
 ```
 
-That's it, all requests for `domain2.foobar.net` will be forwarded to `localhost:333`.
+That's it, all requests for `domain2.foobar.net` will be forwarded to `localhost:3333`.
 
 ## TODO
 
@@ -115,3 +115,6 @@ That's it, all requests for `domain2.foobar.net` will be forwarded to `localhost
 2. More examples on plugins
     - Cache plugins
     - ZLib
+3. Code style
+    - Add .editorconfig
+    - Add .jscsrc

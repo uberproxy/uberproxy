@@ -1,5 +1,3 @@
-*** I've used `igormukhin/uberproxy` name as temporary for testing purposes. 
-Change to `uberproxy/uberproxy` during merge.
 
 ## Prerequisites for Macos
 
@@ -8,28 +6,28 @@ You can mount volumes only from `$HOME` directory. If you want to connect `/conf
 ```
 docker run \
 	-v $HOME/uberproxy/examples/config:/config \
-	-d igormukhin/uberproxy
+	-d uberproxy/uberproxy
 ```
 
 ## Clone
 
 ```
 cd $HOME
-git checkout https://github.com/igormukhingmailcom/uberproxy.git -b feature/dockerising
+git checkout https://github.com/uberproxy/uberproxy.git
 cd uberproxy
 ```
 
 ## Build
 
 ```
-docker build -t igormukhin/uberproxy .
+docker build -t uberproxy/uberproxy .
 ```
 
 Now you can run `docker images` and see that image compiled successfully:
 
 ```
 REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-igormukhin/uberproxy   latest              8f0051e1440c        2 seconds ago       359.1 MB
+uberproxy/uberproxy   latest              8f0051e1440c        2 seconds ago       359.1 MB
 ```
 
 ## Check
@@ -47,7 +45,7 @@ docker run \
 	-e UBERPROXY_CLUSTER=8 \
 	-v $HOME/uberproxy/examples/app:/app \
 	-v $HOME/uberproxy/examples/config:/config \
-	-d igormukhin/uberproxy
+	-d uberproxy/uberproxy
 ```
 
 If you want to test configured image, type for example next:
@@ -58,7 +56,7 @@ docker run \
 	-p 443:443 \
 	-e UBERPROXY_DYNAMIC=/config/dynamic-anonymouse.yml \
 	-e UBERPROXY_SECRET=1234567890 \
-	-d igormukhin/uberproxy
+	-d uberproxy/uberproxy
 ```
 
 Then run `docker-machine ip NAME` and type given IP as your PROXY in System Preferences to test.
@@ -70,5 +68,5 @@ After you check all workd properly - you can push your changes to repository:
 
 ```
 docker login
-docker push igormukhin/uberproxy
+docker push uberproxy/uberproxy
 ```

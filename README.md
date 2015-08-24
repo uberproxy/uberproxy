@@ -68,8 +68,36 @@ secret: 8e0c5e97f91e1a8dde85702ffadff48e8488fda46c457712920aa835dabe25c8
 In order to run the server you should execute this command:
 
 ```bash
-uberproxy server [-c config.yml]
+uberproxy server [-c|--config config.yml] [-w|--worker workers_count] [-p|--http-port 80] [-s|--https-port 443]
 ```
+
+You can override config variables:
+
+- `UBERPROXY_CONFIG` overrides config filename
+- `UBERPROXY_DYNAMIC` overrides dynamic config filename - `dynamic` section of `config.yml`
+- `UBERPROXY_SSL_CERTS` overrides ssl path - `ssl.certs` section of `config.yml`
+- `UBERPROXY_SECRET` overrides secret - `secret` section of `config.yml`
+- `UBERPROXY_CLUSTER` overrides workers count - `cluster` section of `config.yml`
+
+If you run `uberproxy` with empty config it will be initialized with default values just like you prepared next config:
+
+```
+ssl:
+    port: 443
+    certs: /config/ssl
+dynamic: /config/dynamic.yml
+cluster: 4
+port: 80
+```
+
+Config's secret key is mandatory and haven't default value.
+So if you want to run `uberproxy` with empty config - you need to pass `secret` via environment variable:
+
+```
+UBERPROXY_SECRET=123 uberproxy -c empty.yml
+```
+
+Otherwise error will be raised.
 
 ### Parts
 
@@ -99,13 +127,13 @@ It's also possible to define a worker on the config file. If you're using `YAML`
 ```yaml
 workers:
     -
-        client: 'localhost:3333'
+        worker: 'localhost:3333'
         hostname:
             - domain2.foobar.net
         maxreq: 20
 ```
 
-That's it, all requests for `domain2.foobar.net` will be forwarded to `localhost:333`.
+That's it, all requests for `domain2.foobar.net` will be forwarded to `localhost:3333`.
 
 ## TODO
 
@@ -115,3 +143,6 @@ That's it, all requests for `domain2.foobar.net` will be forwarded to `localhost
 2. More examples on plugins
     - Cache plugins
     - ZLib
+3. Code style
+    - Add .editorconfig
+    - Add .jscsrc

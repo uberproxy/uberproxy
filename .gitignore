@@ -1,0 +1,9 @@
+node_modules/
+config.yml
+docker-compose.yml
+
+# Project files
+*.sublime-*
+
+# Etc
+.DS_Store

@@ -1,7 +1,0 @@
-workers:
-    -
-        worker: '193.200.150.125'
-        hostname:
-            - anonymouse.org
-            - www.anonymouse.org
-        maxreq: 20

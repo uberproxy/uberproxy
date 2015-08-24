@@ -3,7 +3,13 @@ Change to `uberproxy/uberproxy` during merge.
 
 ## Prerequisites for Macos
 
-You need work only from `$HOME` directory if you want to connect `/config` folder as volume.
+You can mount volumes only from `$HOME` directory. If you want to connect `/config` folder as volume, command can be like this:
+
+```
+docker run \
+	-v $HOME/uberproxy/examples/config:/config \
+	-d igormukhin/uberproxy
+```
 
 ## Clone
 
@@ -28,10 +34,10 @@ igormukhin/uberproxy   latest              8f0051e1440c        2 seconds ago    
 
 ## Check
 
-Run image and see logs:
+Run image by typing next command. Here we listed all possible ENV variables that recognized by uberproxy through Docker.
 
 ```
-docker logs $(docker run \
+docker run \
 	-p 80:80 \
 	-p 443:443 \
 	-e UBERPROXY_CONFIG=/config/config.yml \
@@ -39,13 +45,24 @@ docker logs $(docker run \
 	-e UBERPROXY_SSL_CERTS=/config/ssl \
 	-e UBERPROXY_SECRET=1234567890 \
 	-e UBERPROXY_CLUSTER=8 \
+	-v $HOME/uberproxy/examples/app:/app \
 	-v $HOME/uberproxy/examples/config:/config \
-	-d igormukhin/uberproxy \
-)
+	-d igormukhin/uberproxy
+```
+
+If you want to test configured image, type for example next:
+
+```
+docker run \
+	-p 80:80 \
+	-p 443:443 \
+	-e UBERPROXY_DYNAMIC=/config/dynamic-anonymouse.yml \
+	-e UBERPROXY_SECRET=1234567890 \
+	-d igormukhin/uberproxy
 ```
 
 Then run `docker-machine ip NAME` and type given IP as your PROXY in System Preferences to test.
-You must see `404 Not Found` on all sites except `anonymouse.org` and `google.com`.
+You must see `404 Not Found` on all sites except `anonymouse.org`.
 
 ## Publish
 

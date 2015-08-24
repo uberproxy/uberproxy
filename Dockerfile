@@ -8,7 +8,7 @@ RUN sudo apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install app & dependencies
-RUN mkdir /app
+VOLUME /app
 WORKDIR /app
 COPY . /app
 RUN npm install

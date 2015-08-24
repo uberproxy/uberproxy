@@ -40,7 +40,7 @@ function setup(parser) {
 }
 
 function main(argv) {
-    var Https    = require('https');
+    var Https    = require('../lib/https');
     var Cluster  = require('cluster');
     var Http     = require('http');
     var Proxy    = require('../lib/proxy');
@@ -67,11 +67,9 @@ function main(argv) {
         });
         
         console.log("Http-Listening in port " + Config.port);
-        console.log("Https-Listening in port " + Config.ssl.port);
         return;
     } else if (!Cluster.isWorker) {
         console.log("Http-Listening in port " + Config.port);
-        console.log("Https-Listening in port " + Config.ssl.port);
     }
     
     function handleRequest(protocol, req, res) {
@@ -88,9 +86,9 @@ function main(argv) {
     
     Http.createServer(handleRequest.bind(null, 'http:')).listen(Config.port);
     Https.createServer(
-        require('../lib/https').options,
-        handleRequest.bind(null, 'https:')
-    ).listen(Config.ssl.port);
+        handleRequest.bind(null, 'https:'),
+        Config.ssl.port
+    );
 };
 
 exports.main = main;

@@ -3,7 +3,7 @@ MAINTAINER Igor Mukhin <igor.mukhin@gmail.com>
 
 # Setup binaries
 RUN sudo apt-get update && \
-    sudo apt-get install -y npm nodejs pwgen && \
+    sudo apt-get install -y npm nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -11,7 +11,7 @@ RUN sudo apt-get update && \
 VOLUME /app
 WORKDIR /app
 COPY . /app
-RUN npm install
+RUN npm cache clean && npm install
 
 # Configure
 VOLUME /config

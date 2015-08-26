@@ -13,7 +13,7 @@ docker run \
 
 ```
 cd $HOME
-git checkout https://github.com/uberproxy/uberproxy.git
+git clone https://github.com/uberproxy/uberproxy.git
 cd uberproxy
 ```
 
@@ -32,7 +32,8 @@ uberproxy/uberproxy   latest              8f0051e1440c        2 seconds ago     
 
 ## Check
 
-Run image by typing next command. Here we listed all possible ENV variables that recognized by uberproxy through Docker.
+Run image by typing next command. 
+Here we listed all possible ENV variables that recognized by uberproxy through Docker.
 
 ```
 docker run \

@@ -135,6 +135,10 @@ workers:
 
 That's it, all requests for `domain2.foobar.net` will be forwarded to `localhost:3333`.
 
+## Docker
+
+Please refer to [DOCKER.md](DOCKER.md) for details on how to build a docker image, or to use Uberproxy directly from the Docker Hub.
+
 ## TODO
 
 1. More documentation

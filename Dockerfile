@@ -3,6 +3,7 @@ MAINTAINER Igor Mukhin <igor.mukhin@gmail.com>
 
 # Setup binaries
 RUN sudo apt-get update && \
+    sudo apt-get -y upgrade && \
     sudo apt-get install -y npm nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

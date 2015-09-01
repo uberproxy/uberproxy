@@ -2,10 +2,13 @@ FROM ubuntu:14.04
 MAINTAINER Igor Mukhin <igor.mukhin@gmail.com>
 
 # Setup binaries
-RUN sudo apt-get update && \
-    sudo apt-get -y upgrade && \
-    sudo apt-get install -y npm nodejs && \
-    apt-get clean && \
+RUN apt-get update && \
+    apt-get -y upgrade && \
+    apt-get install -y curl && \
+	curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash - && \
+	apt-get update && \
+	apt-get install -y nodejs && \
+	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install app & dependencies

@@ -19,8 +19,17 @@ cd uberproxy
 
 ## Build
 
+If you build image right from your working directory - don't forget remove your `node_modules` directory before build:
+
 ```
+rm -Rf node_modules
 docker build -t uberproxy/uberproxy .
+```
+
+Sometimes you'll need `--no-cache` option if previous builds fails and you don't need failed cached results:
+
+```
+docker build -t uberproxy/uberproxy --no-cache .
 ```
 
 Now you can run `docker images` and see that image compiled successfully:

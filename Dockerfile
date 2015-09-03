@@ -1,18 +1,33 @@
 FROM ubuntu:14.04
 MAINTAINER Igor Mukhin <igor.mukhin@gmail.com>
 
-# Setup binaries
-RUN sudo apt-get update && \
-    sudo apt-get -y upgrade && \
-    sudo apt-get install -y npm nodejs && \
-    apt-get clean && \
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get -y upgrade
+
+# Useful
+RUN apt-get install -y curl
+RUN locale-gen en_GB en_GB.UTF-8
+
+# Use latest nodejs & npm
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
+# RUN apt-get update # We don't need do it again - update called inside script from previous line
+RUN apt-get install -y nodejs && \
+	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install app & dependencies
 VOLUME /app
 WORKDIR /app
 COPY . /app
-RUN npm cache clean && npm install
+RUN mkdir -p /dist/node_modules && \
+	cp /app/package.json /dist/package.json && \
+	cd /dist/ && \
+	npm cache clean && \
+	npm install
+
+ENV NODE_PATH /dist/node_modules
 
 # Configure
 VOLUME /config

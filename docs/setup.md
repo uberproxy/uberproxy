@@ -1,6 +1,6 @@
 # Setup
 
-## Instalation
+## Installation
 
 UberProxy can be installed easily with npm. 
 

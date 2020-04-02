@@ -27,7 +27,7 @@ function Plugin(Proxy) {
 exports.plugin = Plugin;
 ```
 
-By doing so, the worker would need to say explicity they want to use the `foobar` plugin.
+By doing so, the worker would need to say explicitly they want to use the `foobar` plugin.
 
 ## Events 
 

@@ -10,7 +10,7 @@ It will run a bare proxy, most requests will return a `Not Found` error. We must
 
 ## RESTful interface
 
-The protocol is pretty simple, it can be impemented in any language which has a `http` client library.
+The protocol is pretty simple, it can be implemented in any language which has a `http` client library.
 
 ```
 POST /_uberproxy/register HTTP/1.1
@@ -23,7 +23,7 @@ X-Auth: sha256($secret + "\0" + "register" +  "\0" + "{json_data}")
 The `X-Auth` is a `sha256` hash which ensures the URI and `json_data` are legit. The `$secret` value is defined in the configuration file (usually `config.yml`).
 
 ### PHP Client
-Our [PHP](https://github.com/uberproxy/php-sdk) client implements the restful interface and provides a set of really simple classes to configurate UberProxy on demand. Think of it as a `Makefile` for deploying your application, once your application is ready, you execute a PHP file which describes your application to the proxy.
+Our [PHP](https://github.com/uberproxy/php-sdk) client implements the restful interface and provides a set of really simple classes to configure UberProxy on demand. Think of it as a `Makefile` for deploying your application, once your application is ready, you execute a PHP file which describes your application to the proxy.
 
 #### Installation
 
